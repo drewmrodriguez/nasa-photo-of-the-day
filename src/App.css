@@ -83,7 +83,7 @@ body {
 
 .home-link {
   font-size: 40px;
-  background: #f59494;
+  background: skyblue;
   display: inline-block;
   padding: 40px 80px;
   color: #fff;
@@ -95,5 +95,5 @@ body {
 
 .home-link:hover {
   border-radius: 5px;
-  background: #e77171;
+  background: skyblue;
 }

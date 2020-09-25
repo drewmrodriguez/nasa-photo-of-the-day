@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import NavBar from "./NavBar";
 
+import NavBar from "./NavBar";
+import axios from "axios";
 
 export default function NasaPhoto() {
   const [photoData, setPhotoData] = useState(null);
@@ -8,7 +9,7 @@ export default function NasaPhoto() {
   useEffect(()=> {
     axios.get('https://api.nasa.gov/planetary/apod?api_key=7Jgd7Ewd6gZ3UK0bg32Fsu4E2XuefbrUPMv03teN')
     .then(response => {
-      setData(response.data);
+      setPhotoData(response.data);
     })
     .catch(err => {
       console.error(err);
