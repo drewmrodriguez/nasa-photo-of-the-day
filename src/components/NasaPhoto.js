@@ -5,17 +5,14 @@ import NavBar from "./NavBar";
 export default function NasaPhoto() {
   const [photoData, setPhotoData] = useState(null);
 
-  useEffect(() => {
-    fetchPhoto();
-
-    async function fetchPhoto() {
-      const res = await fetch(
-        `https://api.nasa.gov/planetary/apod?api_key=7Jgd7Ewd6gZ3UK0bg32Fsu4E2XuefbrUPMv03teN`
-      );
-      const data = await res.json();
-      setPhotoData(data);
-      console.log(data);
-    }
+  useEffect(()=> {
+    axios.get('https://api.nasa.gov/planetary/apod?api_key=7Jgd7Ewd6gZ3UK0bg32Fsu4E2XuefbrUPMv03teN')
+    .then(response => {
+      setData(response.data);
+    })
+    .catch(err => {
+      console.error(err);
+    });
   }, []);
 
   if (!photoData) return <div />;
@@ -50,5 +47,4 @@ export default function NasaPhoto() {
     </>
   );
 }
-
 
