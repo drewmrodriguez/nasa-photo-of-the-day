@@ -1,29 +1,16 @@
-import React, {useState, useEffect} from "react";
-import axios from "axios";
-import Header from "./Header";
+import React from "react";
+import { BrowserRouter, Route } from "react-router-dom";
+import Home from "./components/Home";
+import NasaPhoto from "./components/NasaPhoto";
 import "./App.css";
 
-function App() {
-  const [data, setData] = useState({});
-  useEffect(()=> {
-    axios.get('https://api.nasa.gov/planetary/apod?api_key=7Jgd7Ewd6gZ3UK0bg32Fsu4E2XuefbrUPMv03teN')
-    .then(response => {
-      setData(response.data);
-    })
-    .catch(err => {
-      console.error(err);
-    });
-  }, []);
-
+export default function App() {
   return (
-    <div className="App">
-      <Header />
-      <p>
-        Read through the instructions in the README.md file to build your NASA
-        app! Have fun <span role="img" aria-label='go!'>🚀</span>!
-      </p>
-    </div>
+    <BrowserRouter>
+      <div className="app">
+          <Route component={Home} path="/" exact />
+          <Route component={NasaPhoto} path="/nasaphoto" />
+      </div>
+    </BrowserRouter>
   );
 }
-
-export default App;
